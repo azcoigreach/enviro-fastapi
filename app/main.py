@@ -4,7 +4,7 @@ from fastapi import FastAPI, Response, status
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from envirophat import light, weather, motion, analog
+from envirophat import light, weather, motion, analog, leds
 
 import time
 import datetime
@@ -27,6 +27,7 @@ async def root():
 
 @app.get("/enviro")
 async def enviro():
+    leds.on()
     rgb = light.rgb()
     analog_values = analog.read_all()
     mag_values = motion.magnetometer()
@@ -45,5 +46,6 @@ async def enviro():
             "analog": {"a0": analog_values[0], "a1": analog_values[1], "a2": analog_values[2], "a3": analog_values[3]}
         }
     }
+    leds.off()
     return output  
     

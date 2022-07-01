@@ -8,6 +8,8 @@ if [ "" = "$PKG_OK" ]; then
   sudo apt-get --yes install $REQUIRED_PKG
 fi
 
+cd "$(dirname "$0")"
+
 session="enviro-fastapi"
 tmux has-session -t $session 2>/dev/null
 
