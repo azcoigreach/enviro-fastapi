@@ -27,7 +27,6 @@ async def root():
 
 @app.get("/enviro")
 async def enviro():
-    leds.on()
     rgb = light.rgb()
     analog_values = analog.read_all()
     mag_values = motion.magnetometer()
@@ -46,6 +45,8 @@ async def enviro():
             "analog": {"a0": analog_values[0], "a1": analog_values[1], "a2": analog_values[2], "a3": analog_values[3]}
         }
     }
+    leds.on()
+    time.sleep(0.01)
     leds.off()
     return output  
     
