@@ -4,10 +4,11 @@ pimoroni enviro-phat fastapi
 ## install
 
 `pip3 install -r requirements.txt`
+`sudo chmod +x run.sh`
 
 ## deploy
 
-`uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload`
+`./run.sh`
 
 ## documentation
 
